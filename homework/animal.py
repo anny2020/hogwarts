@@ -38,33 +38,34 @@ class Dog(Animal):
     def can_call(self):
         print("bark bark~~~~")
 
-print("-------------cat---------------------")
-#实例化猫
-cat = Cat("xiaohuang","white",1,'male')
-catch_mouse = cat.catch_mouse()
-cat.can_run()
-print(f"{cat.name,cat.color,cat.age,cat.sex,cat.hair,catch_mouse}")
-print("---------------------dog-----------------------")
-#实例化狗
-dog = Dog("xiaobai","black",2,'female')
-#调用会看家
-dog.watch_home()
-dog.can_call()
-print(f"{dog.name,dog.color,dog.age,dog.sex,dog.hair}")
+if __name__ == '__main__':
+    print("-------------cat---------------------")
+    #实例化猫
+    cat = Cat("xiaohuang","white",1,'male')
+    catch_mouse = cat.catch_mouse()
+    cat.can_run()
+    print(f"{cat.name,cat.color,cat.age,cat.sex,cat.hair,catch_mouse}")
+    print("---------------------dog-----------------------")
+    #实例化狗
+    dog = Dog("xiaobai","black",2,'female')
+    #调用会看家
+    dog.watch_home()
+    dog.can_call()
+    print(f"{dog.name,dog.color,dog.age,dog.sex,dog.hair}")
 
 
-#使用Yaml文件的值传参
-with open("data.yaml","r") as f:
-    data = yaml.safe_load(f)
+    #使用Yaml文件的值传参
+    with open("data.yaml","r") as f:
+        data = yaml.safe_load(f)
 
-print("---------------yaml  cat-------------------")
-yaml_cat = Cat(data['cat']['name'],data['cat']['color'],data['cat']['age'],data['cat']['sex'])
-yaml_cat.hair = data['cat']['hair']
-yaml_catch_mouse = yaml_cat.catch_mouse()
-print(f"{yaml_cat.name,yaml_cat.color,yaml_cat.age,yaml_cat.sex,yaml_cat.hair,yaml_catch_mouse}")
+    print("---------------yaml  cat-------------------")
+    yaml_cat = Cat(data['cat']['name'],data['cat']['color'],data['cat']['age'],data['cat']['sex'])
+    yaml_cat.hair = data['cat']['hair']
+    yaml_catch_mouse = yaml_cat.catch_mouse()
+    print(f"{yaml_cat.name,yaml_cat.color,yaml_cat.age,yaml_cat.sex,yaml_cat.hair,yaml_catch_mouse}")
 
-print("---------------yaml  dog-------------------")
-yaml_dog = Dog(data['dog']['name'],data['dog']['color'],data['dog']['age'],data['dog']['sex'])
-yaml_dog.hair = data['dog']['hair']
-yaml_dog.watch_home()
-print(f"{yaml_dog.name,yaml_dog.color,yaml_dog.age,yaml_dog.sex,yaml_dog.hair}")
+    print("---------------yaml  dog-------------------")
+    yaml_dog = Dog(data['dog']['name'],data['dog']['color'],data['dog']['age'],data['dog']['sex'])
+    yaml_dog.hair = data['dog']['hair']
+    yaml_dog.watch_home()
+    print(f"{yaml_dog.name,yaml_dog.color,yaml_dog.age,yaml_dog.sex,yaml_dog.hair}")
