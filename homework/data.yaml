@@ -1,0 +1,12 @@
+cat:
+  name: "xiao tian"
+  color: "yellow"
+  age: 3
+  sex: "male"
+  hair: "short hair"
+dog:
+  name: "xiao hei"
+  color: "white"
+  age: 2
+  sex: female
+  hair: "long hair"
