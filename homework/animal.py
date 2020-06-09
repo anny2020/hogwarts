@@ -19,13 +19,13 @@ class Animal():
 class Cat(Animal):
     def __init__(self,name,color,age,sex):
         super().__init__(name,color,age,sex)
-        self.hair = "short hair"
+    hair = "short hair"
 
     def catch_mouse(self):
         return "caught the mouse"
 
-    def can_run():
-        print("meow meow")
+    def can_run(self):
+        print("meow meow~~~")
 
 class Dog(Animal):
     def __init__(self,name,color,age,sex):
@@ -36,18 +36,20 @@ class Dog(Animal):
         print("could watch home")
 
     def can_call(self):
-        print("bark bark")
+        print("bark bark~~~~")
 
 print("-------------cat---------------------")
 #实例化猫
 cat = Cat("xiaohuang","white",1,'male')
 catch_mouse = cat.catch_mouse()
+cat.can_run()
 print(f"{cat.name,cat.color,cat.age,cat.sex,cat.hair,catch_mouse}")
 print("---------------------dog-----------------------")
 #实例化狗
 dog = Dog("xiaobai","black",2,'female')
 #调用会看家
 dog.watch_home()
+dog.can_call()
 print(f"{dog.name,dog.color,dog.age,dog.sex,dog.hair}")
 
 
