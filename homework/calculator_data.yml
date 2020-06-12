@@ -1,0 +1,28 @@
+-
+  a: 5
+  b: 2
+  expe_add: 7
+  expe_min: 3
+  expe_mul: 10
+  expe_div: 2.5
+-
+  a: 1.0
+  b: 2.0
+  expe_add: 3.0
+  expe_min: -1.0
+  expe_mul: 2.0
+  expe_div: 0.5
+-
+  a: 4
+  b: 0
+  expe_add: 4
+  expe_min: 4
+  expe_mul: 0
+  expe_div: False
+-
+  a: 0
+  b: 100
+  expe_add: 100
+  expe_min: -100
+  expe_mul: 0
+  expe_div: 0
