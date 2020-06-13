@@ -26,3 +26,10 @@
   expe_min: -100
   expe_mul: 0
   expe_div: 0
+-
+  a: 2000
+  b: 1000
+  expe_add: 3000
+  expe_min: 1000
+  expe_mul: 2000000
+  expe_div: 2
