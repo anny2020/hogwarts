@@ -13,7 +13,7 @@ def pytest_addoption(parser, pluginmanager):
 
 @pytest.fixture(scope="session")
 def cmdoption(request):
-    myenv =  request.config.getoption("--env",default='test')
+    myenv =request.config.getoption("--env",default='test')
     if myenv == 'test':
         print("get test data")
         with open("datas/test/test.yml") as f:
@@ -26,4 +26,5 @@ def cmdoption(request):
         print("get st data")
         with open("datas/st/st.yml") as f:
             print(yaml.safe_load(f))
+    return myenv
 
