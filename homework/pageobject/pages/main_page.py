@@ -31,7 +31,3 @@ class MainPage(Base):
 
 
 
-
-if __name__ == '__main__':
-    mainpage = MainPage()
-    mainpage.import_addrbook()
