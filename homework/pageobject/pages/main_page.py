@@ -17,17 +17,17 @@ from homework.pageobject.pages.import_page import ImportPage
 
 
 class MainPage(Base):
-    baseurl = "https://work.weixin.qq.com/wework_admin/frame#index"
+    _baseurl = "https://work.weixin.qq.com/wework_admin/frame#index"
 
     #从导航标签进入通讯录页面
     def entry_addrbook(self):
-        self.find((By.ID,"menu_contacts")).click()
-        return AddrbookPage(self.driver)
+        self._find((By.ID,"menu_contacts")).click()
+        return AddrbookPage(self._driver)
 
     #导入通讯录
     def import_addrbook(self):
-        self.find((By.CSS_SELECTOR,".index_service_cnt_itemWrap:nth-child(2)")).click()
-        return ImportPage(self.driver)
+        self._find((By.CSS_SELECTOR,".index_service_cnt_itemWrap:nth-child(2)")).click()
+        return ImportPage(self._driver)
 
 
 

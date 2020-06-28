@@ -2,8 +2,6 @@ from time import sleep
 
 import pytest
 
-from homework.pageobject.pages.addrbook_page import AddrbookPage
-from homework.pageobject.pages.import_page import ImportPage
 from homework.pageobject.pages.main_page import MainPage
 
 
@@ -30,7 +28,7 @@ class TestWework:
         #从主页通讯录进入获取人员最新列表
         memlist = self.mainpage.entry_addrbook().get_member_list()
         #验证删除的人员不在列表中
-        assert "安安" not in memlist
+        assert "李二三" not in memlist
 
     def test_importaddr(self):
         #从主页导入通讯录进入录入页面
