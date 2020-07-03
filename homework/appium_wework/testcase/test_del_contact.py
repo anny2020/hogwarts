@@ -30,22 +30,19 @@ class TestDelContact(BaseTest):
         #找到要删除的人员
         self.driver.find_element_by_xpath(f'//*[@resource-id="com.tencent.wework:id/dz9"]//*[@text="{name}"]').click()
         #进入个人信息
-        self.driver.find_element_by_id("com.tencent.wework:id/h9p").click()
+        self.driver.find_element_by_xpath('//*[@text="个人信息"]/../../../../..//*[@class="android.widget.RelativeLayout"]').click()
         #编辑成员
-        self.driver.find_element_by_id("com.tencent.wework:id/b2c").click()
+        self.driver.find_element_by_xpath('//*[@text="编辑成员"]').click()
         #删除成员
-        self.driver.find_element_by_id("com.tencent.wework:id/e3f").click()
+        self.driver.find_element_by_xpath('//*[@text="删除成员"]').click()
         #确定删除
-        self.driver.find_element_by_id("com.tencent.wework:id/bci").click()
+        self.driver.find_element_by_xpath('//*[@text="确定"]').click()
         #强等3秒人员从通讯录去除
         sleep(3)
         # 获取通讯录所有人员
-        members = self.driver.find_elements_by_xpath(
-            '//*[@resource-id="com.tencent.wework:id/dec"]//*[@class="android.widget.TextView"]')
-        print(len(members))
-        mem_list = []
-        for i in range(len(members) - 1):
-            mem_list.append(members[i].get_attribute("text"))
+        members = self.driver.find_elements_by_xpath('//*[@resource-id="com.tencent.wework:id/dec"]//*[@class="android.widget.TextView"]')
+        #要删除的人员对象
+        mem_list = [member.get_attribute("text") for member in members]
         print(mem_list)
         assert name not in mem_list
 
