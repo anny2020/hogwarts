@@ -4,6 +4,7 @@ import yaml
 from appium import webdriver
 import appium
 import pytest
+from selenium.webdriver.support.wait import WebDriverWait
 
 from homework.appium_wework.testcase.base_test import BaseTest
 
@@ -28,7 +29,9 @@ class TestDelContact(BaseTest):
         # 在登录后首页点击“通讯录”
         self.driver.find_element_by_xpath('//*[@text="通讯录"]').click()
         #找到要删除的人员
-        self.driver.find_element_by_xpath(f'//*[@resource-id="com.tencent.wework:id/dz9"]//*[@text="{name}"]').click()
+        # self.driver.find_element_by_xpath(f'//*[@resource-id="com.tencent.wework:id/dz9"]//*[@text="{name}"]').click()
+        self.driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().scrollable(true).'
+                                                        f'instance(0)).scrollIntoView(new UiSelector().text("{name}").instance(0));').click()
         #进入个人信息
         self.driver.find_element_by_xpath('//*[@text="个人信息"]/../../../../..//*[@class="android.widget.RelativeLayout"]').click()
         #编辑成员
@@ -37,12 +40,5 @@ class TestDelContact(BaseTest):
         self.driver.find_element_by_xpath('//*[@text="删除成员"]').click()
         #确定删除
         self.driver.find_element_by_xpath('//*[@text="确定"]').click()
-        #强等3秒人员从通讯录去除
-        sleep(3)
-        # 获取通讯录所有人员
-        members = self.driver.find_elements_by_xpath('//*[@resource-id="com.tencent.wework:id/dec"]//*[@class="android.widget.TextView"]')
-        #要删除的人员对象
-        mem_list = [member.get_attribute("text") for member in members]
-        print(mem_list)
-        assert name not in mem_list
+        assert WebDriverWait(self.driver,10).until_not(lambda x:x.find_element_by_xpath(f"//*[@text='{name}']")) == True
 

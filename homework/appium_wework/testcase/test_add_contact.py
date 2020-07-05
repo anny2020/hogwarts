@@ -4,6 +4,8 @@ import yaml
 from appium import webdriver
 import pytest
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 from homework.appium_wework.testcase.base_test import BaseTest
 
@@ -60,12 +62,13 @@ class TestAddContact(BaseTest):
         self.driver.find_element_by_xpath('//*[@text="保存"]').click()
         ele_toast = self.driver.find_element_by_xpath('//*[@class="android.widget.Toast"]')
         print(ele_toast.text)
-        #添加成功后，返回通讯录页
+        assert ele_toast.text == '添加成功'
+        # 添加成功后，返回通讯录页
         self.driver.find_element_by_xpath('//*[@text="添加成员"]//../../../../*[@class="android.widget.TextView"]').click()
-        #获取通讯录所有人员
-        members = self.driver.find_elements_by_xpath('//*[@resource-id="com.tencent.wework:id/dec"]//*[@class="android.widget.TextView"]')
-        mem_list = [member.get_attribute("text") for member in members]
-        print(mem_list)
-        assert name in mem_list
+        # #获取通讯录所有人员
+        # members = self.driver.find_elements_by_xpath('//*[@resource-id="com.tencent.wework:id/dec"]//*[@class="android.widget.TextView"]')
+        # mem_list = [member.get_attribute("text") for member in members]
+        # print(mem_list)
+        # assert name in mem_list
 
 
