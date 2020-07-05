@@ -31,7 +31,8 @@ class TestAddContact(BaseTest):
         #在登录后首页点击“通讯录”
         self.driver.find_element_by_xpath('//*[@resource-id="com.tencent.wework:id/dyu"]//*[@text="通讯录"]').click()
         #在通讯录页面点击“添加成员”
-        self.driver.find_element_by_xpath('//*[@text="添加成员"]').click()
+        self.driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().scrollable(true).'
+                                                        'instance(0)).scrollIntoView(new UiSelector().text("添加成员").instance(0));').click()
         #在添加成员页面点击“手动输入添加”
         self.driver.find_element_by_xpath('//*[@text="手动输入添加"]').click()
         #添加成员信息
