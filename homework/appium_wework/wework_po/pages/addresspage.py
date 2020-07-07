@@ -21,4 +21,4 @@ class AddressPage(Base):
 
 
     def member_disappear(self,name):
-        return WebDriverWait(self.driver,15).until_not(lambda x:x.find_element_by_xpath(f"//*[@text='{name}']"))
+        return self.find_and_wait(name)
