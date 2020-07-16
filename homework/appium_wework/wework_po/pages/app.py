@@ -1,3 +1,5 @@
+import os
+
 from appium import webdriver
 from appium.webdriver.webdriver import WebDriver
 
@@ -12,7 +14,8 @@ class App(Base):
             desire_cap = {
                 "platformName": "Android",
                 "platformVersion": "6.0.1",
-                "deviceName": "127.0.0.1:7555",
+                # "deviceName": "127.0.0.1:7555",
+                "udid": os.getenv('udid',None),
                 "appPackage": "com.tencent.wework",
                 "appActivity": "com.tencent.wework.launch.WwMainActivity",
                 "noReset": True,
@@ -20,7 +23,9 @@ class App(Base):
                 "unicodeKeyBoard": True,
                 "resetKeyBoard": True
             }
-            self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desire_cap)
+            # self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desire_cap)
+            self.driver = webdriver.Remote("http://192.168.0.101:4444/wd/hub", desire_cap)
+
         else:
             self.driver.launch_app()
         self.driver.implicitly_wait(25)
